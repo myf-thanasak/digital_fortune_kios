@@ -13,7 +13,7 @@ export default function FaqSection() {
     <section id="faq" className="section-pad bg-temple-cream">
       <div className="container-page">
         <SectionHeading
-          eyebrow="คำถามที่พบบ่อย"
+          // eyebrow="คำถามที่พบบ่อย"
           title="คำถามที่พบบ่อย"
           description="รวมคำถามที่ลูกค้าวัด ศาลเจ้า และองค์กรการกุศลถามบ่อยที่สุด"
         />

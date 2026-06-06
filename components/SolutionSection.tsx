@@ -12,7 +12,7 @@ export default function SolutionSection() {
     <section id="solution" className="section-pad bg-white">
       <div className="container-page">
         <SectionHeading
-          eyebrow="โซลูชันของเรา"
+          // eyebrow="โซลูชันของเรา"
           title={solution.title}
           description={solution.description}
         />
@@ -20,7 +20,7 @@ export default function SolutionSection() {
         <Reveal className="mt-12">
           <div className="rounded-3xl border border-temple-gold/25 bg-temple-cream p-6 shadow-soft sm:p-8">
             <p className="text-center text-sm font-semibold uppercase tracking-[0.18em] text-temple-gold">
-              ขั้นตอนการใช้งานแบบรวดเร็ว
+              ขั้นตอนการใช้งานดิจิทัลเซียมซี
             </p>
             <div className="mt-7 flex flex-col items-stretch gap-3 lg:flex-row lg:items-center lg:justify-between">
               {solution.flow.map((step, i) => {
@@ -61,7 +61,7 @@ export default function SolutionSection() {
               >
                 <Image
                   src={flowAdminImg}
-                  alt="แผนผังขั้นตอนการทำงานของระบบ Digital เซียมซี ทั้ง User Flow และ Admin Flow"
+                  alt="แผนผังขั้นตอนการทำงานของระบบ ดิจิทัลเซียมซี ทั้ง User Flow และ Admin Flow"
                   placeholder="blur"
                   sizes="(max-width: 1024px) 100vw, 768px"
                   className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"

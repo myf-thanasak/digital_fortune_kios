@@ -10,9 +10,9 @@ export default function ProblemSection() {
     <section id="problem" className="section-pad bg-temple-cream">
       <div className="container-page">
         <SectionHeading
-          eyebrow="ปัญหาที่พบบ่อย"
+          // eyebrow="ปัญหาที่พบบ่อย"
           title="ปัญหาของจุดรับบริจาคแบบเดิม"
-          description="จุดทำบุญแบบเดิมอาจยังไม่ตอบโจทย์ผู้ทำบุญยุคใหม่ และสร้างประสบการณ์ได้ไม่เต็มที่"
+          description="ตู้รับบริจาคทั่วไปอาจทำให้ผู้มีจิตศรัทธามองข้าม เพราะไม่ดึงดูด ไม่มีระบบชำระเงินดิจิทัล และตรวจสอบยอดย้อนหลังได้ยาก"
         />
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

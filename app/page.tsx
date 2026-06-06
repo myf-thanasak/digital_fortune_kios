@@ -24,12 +24,12 @@ export default function Home() {
         <ProblemSection />
         <SolutionSection />
         <FeatureSection />
-        <UserFlowSection />
+        {/* <BenefitSection /> */}
+        {/* <UserFlowSection /> */}
         <AdminFlowSection />
         <OfflineOnline />
         <UseCaseSection />
-        <BenefitSection />
-        <HardwareSection />
+        {/* <HardwareSection /> */}
         <ServiceSection />
         <CtaSection />
         <FaqSection />

@@ -26,9 +26,9 @@ export default function FeatureSection() {
     <section id="features" className="section-pad bg-temple-cream">
       <div className="container-page">
         <SectionHeading
-          eyebrow="ฟีเจอร์หลัก"
-          title="ฟีเจอร์หลักของระบบ"
-          description="ครบทุกฟังก์ชันที่จำเป็น สำหรับจุดเสี่ยงเซียมซีและรับบริจาคในที่เดียว"
+          // eyebrow="ฟีเจอร์หลัก"
+          title="สิ่งที่จะได้รับ"
+          // description="ครบทุกฟังก์ชันที่จำเป็น สำหรับจุดเสี่ยงเซียมซีและรับบริจาคในที่เดียว"
         />
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -52,7 +52,7 @@ export default function FeatureSection() {
           })}
         </div>
 
-        <Reveal className="mt-8">
+        {/* <Reveal className="mt-8">
           <div className="flex items-start gap-3 rounded-2xl border border-temple-gold/40 bg-temple-gold/10 p-5">
             <Info className="mt-0.5 h-5 w-5 shrink-0 text-temple-red" />
             <p className="text-sm leading-relaxed text-temple-ink/80">
@@ -60,7 +60,7 @@ export default function FeatureSection() {
               {featureNote}
             </p>
           </div>
-        </Reveal>
+        </Reveal> */}
       </div>
     </section>
   );

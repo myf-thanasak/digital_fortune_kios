@@ -27,9 +27,9 @@ export default function UseCaseSection() {
     <section id="usecase" className="section-pad bg-white">
       <div className="container-page">
         <SectionHeading
-          eyebrow="กลุ่มเป้าหมาย"
+          // eyebrow="กลุ่มเป้าหมาย"
           title="เหมาะสำหรับใคร"
-          description="ออกแบบมาให้ปรับใช้ได้กับหลากหลายสถานที่ที่มีจุดทำบุญหรือรับบริจาค"
+          // description="ออกแบบมาให้ปรับใช้ได้กับหลากหลายสถานที่ที่มีจุดทำบุญหรือรับบริจาค"
         />
 
         <div className="mt-12 flex flex-wrap justify-center gap-5">

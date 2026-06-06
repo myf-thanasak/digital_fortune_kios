@@ -1,4 +1,4 @@
-import { FileText, MessageCircle, Phone, Globe } from "lucide-react";
+import { FileText, Phone, Globe, MessageCircle } from "lucide-react";
 import { site } from "@/lib/site";
 import QuoteForm from "./QuoteForm";
 import Reveal from "./Reveal";
@@ -18,7 +18,7 @@ export default function CtaSection() {
         <Reveal>
           <span className="eyebrow-dark">ติดต่อทีมงาน</span>
           <h2 className="heading-lg mt-5 text-temple-cream">
-            สนใจติดตั้ง Digital <span className="gold-text">เซียมซี</span>{" "}
+            สนใจติดตั้ง ดิจิทัล<span className="gold-text">เซียมซี</span>{" "}
             สำหรับวัดหรือองค์กรของคุณ?
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-temple-cream/75 sm:text-lg">
@@ -28,19 +28,10 @@ export default function CtaSection() {
 
           <ThaiDivider className="mt-8 !justify-start" />
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8">
             <a href="#quote-form" className="btn-primary">
               <FileText className="h-5 w-5" />
               {site.ctaPrimary}
-            </a>
-            <a
-              href={site.lineUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-line"
-            >
-              <MessageCircle className="h-5 w-5" />
-              {site.ctaLine}
             </a>
           </div>
 

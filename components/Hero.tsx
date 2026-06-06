@@ -16,13 +16,13 @@ export default function Hero() {
 
       <div className="container-page relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
         <Reveal className="text-center lg:text-left">
-          <span className="eyebrow-dark mx-auto lg:mx-0">
+          {/* <span className="eyebrow-dark mx-auto lg:mx-0">
             <Sparkles className="h-3.5 w-3.5" />
             {hero.badge}
-          </span>
+          </span> */}
 
-          <h1 className="heading-xl mt-6 text-temple-cream">
-            Digital <span className="gold-text">เซียมซี</span>
+          <h1 className="heading-xl text-temple-cream">
+            ดิจิทัล<span className="gold-text">เซียมซี</span>
           </h1>
 
           <p className="mt-5 font-heading text-xl font-medium text-temple-gold-soft sm:text-2xl">

@@ -3,7 +3,6 @@
 import { useState, type FormEvent } from "react";
 import {
   User,
-  Building2,
   Phone,
   MessageCircle,
   FileText,
@@ -15,28 +14,22 @@ import { site } from "@/lib/site";
 
 type FormState = {
   name: string;
-  org: string;
   phone: string;
-  lineId: string;
   details: string;
 };
 
 const initialState: FormState = {
   name: "",
-  org: "",
   phone: "",
-  lineId: "",
   details: "",
 };
 
 function buildMessage(data: FormState) {
   return [
-    "ขอใบเสนอราคา Digital เซียมซี",
+    "ขอใบเสนอราคา ดิจิทัลเซียมซี",
     "──────────────────",
     `ชื่อผู้ติดต่อ: ${data.name || "-"}`,
-    `ชื่อวัด/องค์กร: ${data.org || "-"}`,
     `เบอร์โทร: ${data.phone || "-"}`,
-    `LINE ID: ${data.lineId || "-"}`,
     `รายละเอียดที่สนใจ: ${data.details || "-"}`,
   ].join("\n");
 }
@@ -67,8 +60,8 @@ export default function QuoteForm() {
       setError("กรุณากรอกชื่อผู้ติดต่อ");
       return;
     }
-    if (!data.phone.trim() && !data.lineId.trim()) {
-      setError("กรุณากรอกเบอร์โทรหรือ LINE ID อย่างน้อย 1 ช่องทาง");
+    if (!data.phone.trim()) {
+      setError("กรุณากรอกเบอร์โทร");
       return;
     }
     setError(null);
@@ -91,7 +84,6 @@ export default function QuoteForm() {
           </h3>
           <p className="mt-2 max-w-md text-sm leading-relaxed text-temple-ink/70">
             เราได้คัดลอกรายละเอียดของท่านไว้แล้ว และเปิดแชต LINE
-            <span className="font-semibold text-temple-ink"> {site.lineId} </span>
             ให้อัตโนมัติ — เพียง <span className="font-semibold">วางข้อความ</span>{" "}
             แล้วกดส่ง ทีมงานจะติดต่อกลับโดยเร็ว
           </p>
@@ -160,27 +152,14 @@ export default function QuoteForm() {
           autoComplete="name"
         />
         <Field
-          label="ชื่อวัด / องค์กร"
-          icon={<Building2 className="h-4 w-4" />}
-          value={data.org}
-          onChange={update("org")}
-          placeholder="เช่น วัดพระแก้ว"
-        />
-        <Field
           label="เบอร์โทร"
+          required
           icon={<Phone className="h-4 w-4" />}
           value={data.phone}
           onChange={update("phone")}
           placeholder="08X-XXX-XXXX"
           type="tel"
           autoComplete="tel"
-        />
-        <Field
-          label="LINE ID"
-          icon={<MessageCircle className="h-4 w-4" />}
-          value={data.lineId}
-          onChange={update("lineId")}
-          placeholder="เช่น @yourtemple"
         />
       </div>
 
@@ -209,7 +188,7 @@ export default function QuoteForm() {
         ขอใบเสนอราคา
       </button>
       <p className="mt-3 text-center text-xs text-temple-ink/50">
-        เมื่อกดส่ง ระบบจะคัดลอกข้อมูลและเปิดแชต LINE {site.lineId} ให้อัตโนมัติ
+        เมื่อกดส่ง ระบบจะคัดลอกข้อมูลและเปิดแชต LINE ให้อัตโนมัติ
       </p>
     </form>
   );

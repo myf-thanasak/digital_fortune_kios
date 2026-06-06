@@ -37,7 +37,7 @@ export default function Navbar() {
             <LotusMark className="h-6 w-6" />
           </span>
           <span className="font-heading text-lg font-bold text-temple-cream sm:text-xl">
-            Digital <span className="gold-text">เซียมซี</span>
+            ดิจิทัล<span className="gold-text">เซียมซี</span>
           </span>
         </a>
 

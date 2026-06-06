@@ -36,7 +36,7 @@ export default function UserFlowSection() {
       <div className="container-page relative">
         <SectionHeading
           dark
-          eyebrow="ขั้นตอนการใช้งาน"
+          // eyebrow="ขั้นตอนการใช้งาน"
           title={<span className="text-temple-cream">ขั้นตอนการใช้งานสำหรับผู้ร่วมทำบุญ</span>}
           description={
             <span className="text-temple-cream/70">

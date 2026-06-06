@@ -30,7 +30,7 @@ export default function AdminFlowSection() {
     <section id="admin" className="section-pad bg-white">
       <div className="container-page">
         <SectionHeading
-          eyebrow="ระบบหลังบ้าน"
+          // eyebrow="ระบบหลังบ้าน"
           title="ระบบหลังบ้านสำหรับผู้ดูแล"
           description="จัดการเนื้อหา ตั้งค่า และดูสถิติได้เองอย่างยืดหยุ่น เหมาะกับทุกสถานที่"
         />

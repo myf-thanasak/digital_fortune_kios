@@ -8,9 +8,9 @@ export default function ServiceSection() {
     <section id="service" className="section-pad bg-white">
       <div className="container-page">
         <SectionHeading
-          eyebrow="บริการครบวงจร"
+          // eyebrow="บริการครบวงจร"
           title="บริการของเรา"
-          description="ดูแลตั้งแต่ออกแบบ ติดตั้ง ตั้งค่า ไปจนถึงบริการหลังการขาย"
+          description="ดูแลตั้งแต่ออกแบบ ติดตั้ง ไปจนถึงบริการหลังการขาย"
         />
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

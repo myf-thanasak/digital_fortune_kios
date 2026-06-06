@@ -16,7 +16,7 @@ export default function Footer() {
                 <LotusMark className="h-6 w-6" />
               </span>
               <span className="font-heading text-xl font-bold text-temple-cream">
-                Digital <span className="gold-text">เซียมซี</span>
+                ดิจิทัล<span className="gold-text">เซียมซี</span>
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-temple-cream/60">
@@ -84,7 +84,7 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-center sm:flex-row sm:text-left">
           <p className="text-xs text-temple-cream/45">
-            © {year} {site.company} · Digital เซียมซี สงวนลิขสิทธิ์
+            © {year} {site.company} · ดิจิทัลเซียมซี สงวนลิขสิทธิ์
           </p>
           <p className="text-xs text-temple-cream/45">{site.domain}</p>
         </div>

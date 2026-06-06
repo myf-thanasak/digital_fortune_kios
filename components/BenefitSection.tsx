@@ -15,7 +15,7 @@ export default function BenefitSection() {
       <div className="container-page relative">
         <SectionHeading
           dark
-          eyebrow="คุณค่าที่ส่งมอบ"
+          // eyebrow="คุณค่าที่ส่งมอบ"
           title={<span className="text-temple-cream">สิ่งที่องค์กรจะได้รับ</span>}
           description={
             <span className="text-temple-cream/75">

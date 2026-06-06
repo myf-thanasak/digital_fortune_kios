@@ -77,7 +77,7 @@ export default function OfflineOnline() {
     <section id="offline-online" className="section-pad bg-temple-cream">
       <div className="container-page">
         <SectionHeading
-          eyebrow="ยืดหยุ่นทุกพื้นที่"
+          // eyebrow="ยืดหยุ่นทุกพื้นที่"
           title="รองรับการใช้งานทั้ง Offline และ Online"
           description={offlineOnlineIntro}
         />
@@ -85,7 +85,7 @@ export default function OfflineOnline() {
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <ModeCard
             title="Offline Mode"
-            subtitle="ใช้งานได้แม้อินเทอร์เน็ตไม่เสถียร"
+            subtitle="ใช้งานได้แม้ไม่มีอินเทอร์เน็ต"
             items={offlineMode}
             icon={WifiOff}
             accent="gold"
