@@ -5,10 +5,9 @@ import {
   SquarePen,
   Palette,
   BarChart3,
-  Info,
   type LucideIcon,
 } from "lucide-react";
-import { features, featureNote } from "@/lib/site";
+import { features } from "@/lib/site";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
