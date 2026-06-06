@@ -1,4 +1,4 @@
-import { Phone, Globe, MessageCircle } from "lucide-react";
+import { Phone, Facebook, MessageCircle } from "lucide-react";
 import { site } from "@/lib/site";
 import Reveal from "./Reveal";
 import { ThaiDivider } from "./svg/ThaiOrnament";
@@ -59,17 +59,22 @@ export default function CtaSection() {
               </span>
             </span>
           </a>
-          <div className="flex flex-col items-center gap-3 rounded-2xl border border-temple-gold/20 bg-white/5 p-6 text-center backdrop-blur sm:col-span-2 lg:col-span-1">
-            <span className="grid h-12 w-12 place-items-center rounded-xl bg-temple-gold text-temple-ink">
-              <Globe className="h-5 w-5" />
+          <a
+            href="https://www.facebook.com/myfirstc.media"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center gap-3 rounded-2xl border border-temple-gold/20 bg-white/5 p-6 text-center backdrop-blur transition-colors hover:bg-white/10 sm:col-span-2 lg:col-span-1"
+          >
+            <span className="grid h-12 w-12 place-items-center rounded-xl bg-[#1877F2] text-white">
+              <Facebook className="h-5 w-5" />
             </span>
             <span>
-              <span className="block text-xs text-temple-cream/55">Website</span>
+              <span className="block text-xs text-temple-cream/55">Facebook</span>
               <span className="font-heading text-lg font-semibold text-temple-cream">
-                {site.domain}
+                myfirstc.media
               </span>
             </span>
-          </div>
+          </a>
         </Reveal>
       </div>
     </section>
