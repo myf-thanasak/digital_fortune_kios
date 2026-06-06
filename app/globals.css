@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-kanit: "Kanit", system-ui, sans-serif;
+  --font-prompt: "Prompt", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    @apply bg-temple-cream text-temple-ink font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+
+  ::selection {
+    @apply bg-temple-gold/40 text-temple-ink;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .section-pad {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-temple-gold/40 bg-temple-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-temple-gold;
+  }
+
+  .eyebrow-dark {
+    @apply inline-flex items-center gap-2 rounded-full border border-temple-gold/50 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-temple-gold-soft;
+  }
+
+  .heading-xl {
+    @apply font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl;
+  }
+
+  .heading-lg {
+    @apply font-heading text-3xl font-bold leading-tight sm:text-4xl lg:text-[2.75rem];
+  }
+
+  .heading-md {
+    @apply font-heading text-2xl font-semibold leading-snug sm:text-3xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-temple-gold to-temple-gold-light text-temple-ink shadow-gold hover:-translate-y-0.5 hover:shadow-[0_16px_45px_-8px_rgba(212,175,55,0.6)];
+  }
+
+  .btn-outline-gold {
+    @apply btn border border-temple-gold/60 bg-transparent text-temple-gold-soft hover:bg-temple-gold/10;
+  }
+
+  .btn-red {
+    @apply btn bg-temple-red text-white shadow-card hover:-translate-y-0.5 hover:bg-temple-red-light;
+  }
+
+  .btn-line {
+    @apply btn bg-[#06C755] text-white hover:-translate-y-0.5 hover:bg-[#05b54d];
+  }
+
+  .card {
+    @apply rounded-2xl border border-temple-gold/20 bg-white p-6 shadow-soft transition-all duration-300;
+  }
+
+  .card-dark {
+    @apply rounded-2xl border border-temple-gold/20 bg-temple-ink-soft/60 p-6 backdrop-blur;
+  }
+
+  .gold-divider {
+    @apply h-px w-full bg-gold-line;
+  }
+
+  .gold-text {
+    @apply bg-gradient-to-r from-temple-gold via-temple-gold-light to-temple-gold-soft bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .thai-pattern {
+    background-image: radial-gradient(
+        circle at 1px 1px,
+        rgba(200, 162, 75, 0.18) 1px,
+        transparent 0
+      );
+    background-size: 22px 22px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
