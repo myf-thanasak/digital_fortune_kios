@@ -50,7 +50,7 @@ export const hero = {
     // { value: "Touch", label: "หน้าจอสัมผัสใช้งานง่าย" },
     // { value: "QR", label: "รับบริจาคทันใจ" },
     // { value: "TH / EN", label: "รองรับหลายภาษา" },
-  ],
+  ] as { value: string; label: string }[],
 };
 
 export const problems = [
