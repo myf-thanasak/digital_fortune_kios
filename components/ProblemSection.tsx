@@ -1,9 +1,9 @@
-import { Inbox, Zap, ReceiptText, MonitorOff } from "lucide-react";
+import { EyeOff, QrCode, ClipboardList, HeartHandshake } from "lucide-react";
 import { problems } from "@/lib/site";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
-const icons = [Inbox, Zap, ReceiptText, MonitorOff];
+const icons = [EyeOff, QrCode, ClipboardList, HeartHandshake];
 
 export default function ProblemSection() {
   return (

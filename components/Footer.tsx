@@ -25,7 +25,15 @@ export default function Footer() {
               และสถานบริจาค
             </p>
             <p className="mt-4 text-sm text-temple-cream/50">
-              โดย {site.company}
+              โดย{" "}
+              <a
+                href="https://myfirstc.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-temple-gold/80 transition-colors hover:text-temple-gold"
+              >
+                {site.company}
+              </a>
             </p>
           </div>
 
@@ -84,7 +92,16 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-center sm:flex-row sm:text-left">
           <p className="text-xs text-temple-cream/45">
-            © {year} {site.company} · ดิจิทัลเซียมซี สงวนลิขสิทธิ์
+            © {year}{" "}
+            <a
+              href="https://myfirstc.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-temple-gold"
+            >
+              {site.company}
+            </a>{" "}
+            · ดิจิทัลเซียมซี สงวนลิขสิทธิ์
           </p>
           <p className="text-xs text-temple-cream/45">{site.domain}</p>
         </div>

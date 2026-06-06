@@ -28,7 +28,7 @@ export default function SolutionSection() {
                 return (
                   <div
                     key={step}
-                    className="flex items-center gap-3 lg:flex-1 lg:flex-col lg:gap-2 lg:text-center"
+                    className="flex items-center gap-3 lg:relative lg:flex-1 lg:flex-col lg:gap-2 lg:text-center"
                   >
                     <div className="flex items-center gap-3 lg:flex-col">
                       <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-temple-red to-temple-red-dark text-temple-gold-soft shadow-card">
@@ -42,7 +42,7 @@ export default function SolutionSection() {
                       </span>
                     </div>
                     {i < solution.flow.length - 1 ? (
-                      <ChevronRight className="ml-auto hidden h-5 w-5 shrink-0 text-temple-gold lg:block" />
+                      <ChevronRight className="ml-auto hidden h-5 w-5 shrink-0 text-temple-gold lg:absolute lg:right-0 lg:top-7 lg:ml-0 lg:block lg:-translate-y-1/2 lg:translate-x-1/2" />
                     ) : null}
                   </div>
                 );

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FileText, PlayCircle, Sparkles } from "lucide-react";
+import { FileText } from "lucide-react";
 import { hero, site } from "@/lib/site";
 import Reveal from "./Reveal";
 import kioskImg from "@/public/kios55_L.webp";
@@ -33,14 +33,10 @@ export default function Hero() {
             {hero.description}
           </p>
 
-          <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
-            <a href="#contact" className="btn-primary">
-              <FileText className="h-5 w-5" />
+          <div className="mt-8 flex justify-center lg:justify-start">
+            <a href="#contact" className="btn-primary whitespace-nowrap">
+              <FileText className="h-5 w-5 shrink-0" />
               {site.ctaPrimary}
-            </a>
-            <a href="#flow" className="btn-outline-gold">
-              <PlayCircle className="h-5 w-5" />
-              {site.ctaSecondary}
             </a>
           </div>
 
