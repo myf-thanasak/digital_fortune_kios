@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X, FileText } from "lucide-react";
 import { navLinks, site } from "@/lib/site";
-import { LotusMark } from "./svg/ThaiOrnament";
+import { SiamsiMark } from "./svg/SiamsiMark";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,10 +33,8 @@ export default function Navbar() {
     >
       <nav className="container-page flex h-16 items-center justify-between sm:h-20">
         <a href="#top" className="flex items-center gap-2.5">
-          <span className="grid h-10 w-10 place-items-center rounded-xl border border-temple-gold/40 bg-temple-red">
-            <LotusMark className="h-6 w-6" />
-          </span>
-          <span className="font-heading text-lg font-bold text-temple-cream sm:text-xl">
+          <SiamsiMark className="h-10 w-10 shrink-0 sm:h-11 sm:w-11" />
+          <span className="font-heading text-lg font-bold leading-none tracking-tight text-temple-cream sm:text-xl">
             ดิจิทัล<span className="gold-text">เซียมซี</span>
           </span>
         </a>

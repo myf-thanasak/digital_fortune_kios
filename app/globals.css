@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-kanit: "Kanit", system-ui, sans-serif;
-  --font-prompt: "Prompt", system-ui, sans-serif;
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
