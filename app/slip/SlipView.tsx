@@ -20,7 +20,7 @@ import {
   getFortune,
   parseFortuneNo,
   normalizeLocale,
-} from "@/lib/fortunes";
+} from "@/lib/fortune-data";
 import { site } from "@/lib/site";
 import { LotusMark } from "@/components/svg/ThaiOrnament";
 
