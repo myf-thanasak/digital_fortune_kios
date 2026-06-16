@@ -46,7 +46,7 @@ const COPY = {
     noNoText: "กรุณาสแกน QR Code ใหม่อีกครั้ง",
     notFoundTitle: "ไม่พบข้อมูลใบเซียมซีนี้",
     notFoundText: "กรุณาติดต่อเจ้าหน้าที่",
-    donateFaith: "หากท่านมีจิตศรัทธา สามารถร่วมทำบุญกับวัดได้โดยตรง",
+    donateFaith: "ขอเชิญผู้มีจิตศรัทธาร่วมทำบุญ โดยสแกน QR Code",
     donateThanks: "ขออนุโมทนาบุญ",
     // donateBadge: "QR สำหรับบริจาค",
     // donateClarify: "นี่คือ QR สำหรับร่วมบริจาค ไม่ใช่ QR ใบเซียมซี",
