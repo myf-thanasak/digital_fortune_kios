@@ -12,6 +12,17 @@
         "th": "ขอให้ท่านมีสติ มีความเพียร และใช้ชีวิตด้วยความไม่ประมาท",
         "en": "May you live mindfully, with diligence and care."
       },
+      "donation": {
+        "qrImage": "/QR.jpg",
+        "title": {
+          "th": "ร่วมทำบุญเสริมสิริมงคล",
+          "en": "Make a Merit Donation"
+        },
+        "message": {
+          "th": "เงินบริจาคจะโอนตรงเข้าสู่บัญชีของวัด / มูลนิธิ",
+          "en": "Your donation will be transferred directly to the temple or foundation account."
+        }
+      },
       "fortunes": [
         {
           "no": 1,

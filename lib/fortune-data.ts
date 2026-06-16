@@ -35,11 +35,21 @@ export interface Fortune {
   en: FortuneContent;
 }
 
+/** ข้อมูล QR บริจาคของวัด/ศาลเจ้า (แสดงในหน้า /slip บนมือถือ) */
+export interface Donation {
+  /** path รูป QR บริจาค เช่น "/donation-qr.jpg" (อยู่ในโฟลเดอร์ public) */
+  qrImage: string;
+  title: Record<Locale, string>;
+  message: Record<Locale, string>;
+}
+
 export interface Temple {
   templeId: string;
   templeName: Record<Locale, string>;
   /** ข้อความท้ายใบ เช่น คำอวยพร (ไม่บังคับ) */
   blessing?: Record<Locale, string>;
+  /** ข้อมูล QR บริจาค (ไม่บังคับ — ถ้าไม่มีจะใช้ค่า default) */
+  donation?: Donation;
   fortunes: Fortune[];
 }
 
@@ -92,4 +102,22 @@ export function getDefaultTemple(): Temple {
 /** ค้นหาใบเซียมซีในวัดตามเลข — คืน undefined ถ้าไม่พบ */
 export function getFortune(temple: Temple, no: number): Fortune | undefined {
   return temple.fortunes.find((f) => f.no === no);
+}
+
+/** ค่า QR บริจาคเริ่มต้น ใช้เมื่อวัดยังไม่ได้กำหนด donation ใน JSON */
+export const DEFAULT_DONATION: Donation = {
+  qrImage: "/QR.jpg",
+  title: {
+    th: "ร่วมทำบุญเสริมสิริมงคล",
+    en: "Make a Merit Donation",
+  },
+  message: {
+    th: "เงินบริจาคจะโอนตรงเข้าสู่บัญชีของวัด",
+    en: "Your donation will be transferred directly to the temple or foundation account.",
+  },
+};
+
+/** คืนข้อมูล QR บริจาคของวัด ถ้าไม่มีจะใช้ค่า default */
+export function getDonation(temple: Temple): Donation {
+  return temple.donation ?? DEFAULT_DONATION;
 }

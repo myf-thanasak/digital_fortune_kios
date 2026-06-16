@@ -10,6 +10,8 @@ import {
   Lightbulb,
   AlertTriangle,
   Check,
+  HeartHandshake,
+  QrCode,
 } from "lucide-react";
 import {
   type Locale,
@@ -18,6 +20,7 @@ import {
   getTemple,
   getDefaultTemple,
   getFortune,
+  getDonation,
   parseFortuneNo,
   normalizeLocale,
 } from "@/lib/fortune-data";
@@ -43,6 +46,14 @@ const COPY = {
     noNoText: "กรุณาสแกน QR Code ใหม่อีกครั้ง",
     notFoundTitle: "ไม่พบข้อมูลใบเซียมซีนี้",
     notFoundText: "กรุณาติดต่อเจ้าหน้าที่",
+    donateFaith: "หากท่านมีจิตศรัทธา สามารถร่วมทำบุญกับวัดได้โดยตรง",
+    donateThanks: "ขออนุโมทนาบุญ",
+    // donateBadge: "QR สำหรับบริจาค",
+    // donateClarify: "นี่คือ QR สำหรับร่วมบริจาค ไม่ใช่ QR ใบเซียมซี",
+    saveQr: "บันทึก QR บริจาค",
+    qrSaved: "บันทึก QR บริจาคแล้ว",
+    copyLink: "คัดลอกลิงก์หน้านี้",
+    qrMissing: "ยังไม่มีรูป QR บริจาค กรุณาวางไฟล์ที่ public/donation-qr.jpg",
     locale: "th-TH",
   },
   en: {
@@ -62,6 +73,15 @@ const COPY = {
     noNoText: "Please scan the QR Code again.",
     notFoundTitle: "This fortune was not found",
     notFoundText: "Please contact the staff.",
+    donateFaith:
+      "If you wish, you may make a merit donation directly to the temple.",
+    donateThanks: "We rejoice in your merit (Anumodana).",
+    // donateBadge: "Donation QR",
+    // donateClarify: "This is a donation QR, not the fortune slip QR.",
+    saveQr: "Save donation QR",
+    qrSaved: "Donation QR saved",
+    copyLink: "Copy page link",
+    qrMissing: "Donation QR not set. Add the file at public/donation-qr.jpg",
     locale: "en-GB",
   },
 } as const;
@@ -120,11 +140,13 @@ function SlipCard({
 }) {
   const t = COPY[lang];
   const content = fortune[lang];
+  const donation = getDonation(temple);
 
   const cardRef = useRef<HTMLDivElement>(null);
   const [openedAt, setOpenedAt] = useState("");
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState("");
+  const [qrError, setQrError] = useState(false);
 
   // คำนวณวันที่ฝั่ง client เพื่อเลี่ยง hydration mismatch
   useEffect(() => {
@@ -177,7 +199,7 @@ function SlipCard({
   async function handleShare() {
     const url = typeof window !== "undefined" ? window.location.href : "";
     const shareData = {
-      title: t.brand,
+      // title: t.brand,
       text: `${content.title} · ${temple.templeName[lang]}`,
       url,
     };
@@ -198,6 +220,20 @@ function SlipCard({
     }
   }
 
+  // ─── บันทึกรูป QR บริจาค (ดาวน์โหลดไฟล์รูปโดยตรง) ───
+  async function handleSaveQr() {
+    try {
+      const link = document.createElement("a");
+      link.href = donation.qrImage;
+      link.download = `donation-qr-${temple.templeId}.jpg`;
+      link.click();
+      showToast(t.qrSaved);
+    } catch (err) {
+      console.error("save donation QR failed:", err);
+      showToast(t.saveFailed);
+    }
+  }
+
   return (
     <main className="relative min-h-[100dvh] overflow-hidden bg-temple-radial px-4 py-8 sm:py-12">
       {/* แสงประดับพื้นหลัง */}
@@ -212,10 +248,10 @@ function SlipCard({
         >
           {/* หัวการ์ด */}
           <div className="flex flex-col items-center gap-3 px-6 pt-8 text-center">
-            <span className="grid h-12 w-12 place-items-center rounded-xl border border-temple-gold/40 bg-white/5">
+            {/* <span className="grid h-12 w-12 place-items-center rounded-xl border border-temple-gold/40 bg-white/5">
               <LotusMark className="h-7 w-7" />
-            </span>
-            <span className="eyebrow-dark">{t.brand}</span>
+            </span> */}
+            {/* <span className="eyebrow-dark">{t.brand}</span> */}
             <h1 className="font-heading text-xl font-bold text-temple-cream">
               {temple.templeName[lang]}
             </h1>
@@ -284,6 +320,30 @@ function SlipCard({
               </span>
               <span>{site.domain}</span>
             </div>
+
+            {/* ปุ่มในกล่อง (ไม่ถูกบันทึกลงรูปด้วย data-html2canvas-ignore) */}
+            <div
+              data-html2canvas-ignore="true"
+              className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2"
+            >
+              <button
+                type="button"
+                onClick={handleSave}
+                disabled={saving}
+                className="btn-primary !py-3.5 disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                <Download className="h-5 w-5" />
+                {saving ? t.saving : t.save}
+              </button>
+              <button
+                type="button"
+                onClick={handleShare}
+                className="btn-outline-gold !py-3.5"
+              >
+                <Share2 className="h-5 w-5" />
+                {t.share}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -295,26 +355,66 @@ function SlipCard({
           </p>
         ) : null}
 
-        {/* ปุ่มด้านล่าง */}
-        <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <button
-            type="button"
-            onClick={handleSave}
-            disabled={saving}
-            className="btn-primary !py-3.5 disabled:cursor-not-allowed disabled:opacity-70"
-          >
-            <Download className="h-5 w-5" />
-            {saving ? t.saving : t.save}
-          </button>
-          <button
-            type="button"
-            onClick={handleShare}
-            className="btn-outline-gold !py-3.5"
-          >
-            <Share2 className="h-5 w-5" />
-            {t.share}
-          </button>
-        </div>
+        {/* ─── Section ร่วมทำบุญ (QR บริจาค — แยกจาก QR ใบเซียมซีบนตู้) ─── */}
+        <section className="mt-6 overflow-hidden rounded-[2rem] border border-temple-gold/40 bg-gradient-to-b from-temple-red-dark via-[#4a0a0d] to-temple-ink p-6 text-center shadow-card">
+          <div className="flex flex-col items-center gap-2">
+            <span className="grid h-12 w-12 place-items-center rounded-xl border border-temple-gold/40 bg-white/5">
+              <HeartHandshake className="h-7 w-7 text-temple-gold-soft" />
+            </span>
+            <h2 className="font-heading text-xl font-bold text-temple-cream">
+              {donation.title[lang]}
+            </h2>
+            <p className="text-sm leading-relaxed text-temple-cream/85">
+              {t.donateFaith}
+            </p>
+          </div>
+
+          {/* QR บริจาค */}
+          <div className="mt-5 flex flex-col items-center">
+            {/* <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-temple-gold/50 bg-temple-gold/15 px-3 py-1 text-xs font-semibold text-temple-gold-soft">
+              <QrCode className="h-3.5 w-3.5" />
+              {t.donateBadge}
+            </span> */}
+            <div className="rounded-2xl border-2 border-temple-gold/60 bg-white p-3">
+              {qrError ? (
+                <div className="grid h-52 w-52 place-items-center px-4 text-center text-xs leading-relaxed text-temple-ink/70">
+                  {t.qrMissing}
+                </div>
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={donation.qrImage}
+                  alt={donation.title[lang]}
+                  onError={() => setQrError(true)}
+                  className="h-52 w-52 object-contain"
+                />
+              )}
+            </div>
+            {/* ข้อความสำคัญ: เงินบริจาคโอนตรงเข้าบัญชีวัด/มูลนิธิ */}
+            <p className="mt-4 rounded-lg bg-temple-gold/10 px-3 py-2 text-sm font-semibold leading-relaxed text-temple-gold-soft">
+              {donation.message[lang]}
+            </p>
+            {/* <p className="mt-2 text-[11px] text-temple-cream/55">
+              {t.donateClarify}
+            </p> */}
+          </div>
+
+          {/* ปุ่มบริจาค */}
+          <div className="mt-5">
+            <button
+              type="button"
+              onClick={handleSaveQr}
+              className="btn-primary w-full !py-3.5"
+            >
+              <Download className="h-5 w-5" />
+              {t.saveQr}
+            </button>
+          </div>
+
+          <p className="mt-5 text-sm italic text-temple-gold-soft/85">
+            {t.donateThanks}
+          </p>
+        </section>
       </div>
 
       {/* Toast แจ้งผล */}
@@ -353,7 +453,7 @@ function ErrorCard({
           {text}
         </p>
         <div className="mt-6 flex items-center justify-center gap-2 text-xs text-temple-gold-soft/70">
-          <LotusMark className="h-4 w-4" />
+          {/* <LotusMark className="h-4 w-4" /> */}
           {site.name}
         </div>
       </div>
