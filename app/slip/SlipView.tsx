@@ -46,7 +46,7 @@ const COPY = {
     noNoText: "กรุณาสแกน QR Code ใหม่อีกครั้ง",
     notFoundTitle: "ไม่พบข้อมูลใบเซียมซีนี้",
     notFoundText: "กรุณาติดต่อเจ้าหน้าที่",
-    donateFaith: "ขอเชิญผู้มีจิตศรัทธาร่วมทำบุญ โดยสแกน QR Code",
+    // donateFaith: "ขอเชิญผู้มีจิตศรัทธาร่วมทำบุญ โดยสแกน QR Code",
     donateThanks: "ขออนุโมทนาบุญ",
     // donateBadge: "QR สำหรับบริจาค",
     // donateClarify: "นี่คือ QR สำหรับร่วมบริจาค ไม่ใช่ QR ใบเซียมซี",
@@ -73,8 +73,8 @@ const COPY = {
     noNoText: "Please scan the QR Code again.",
     notFoundTitle: "This fortune was not found",
     notFoundText: "Please contact the staff.",
-    donateFaith:
-      "If you wish, you may make a merit donation directly to the temple.",
+    // donateFaith:
+    //   "If you wish, you may make a merit donation directly to the temple.",
     donateThanks: "We rejoice in your merit (Anumodana).",
     // donateBadge: "Donation QR",
     // donateClarify: "This is a donation QR, not the fortune slip QR.",
@@ -364,9 +364,9 @@ function SlipCard({
             <h2 className="font-heading text-xl font-bold text-temple-cream">
               {donation.title[lang]}
             </h2>
-            <p className="text-sm leading-relaxed text-temple-cream/85">
+            {/* <p className="text-sm leading-relaxed text-temple-cream/85">
               {t.donateFaith}
-            </p>
+            </p> */}
           </div>
 
           {/* QR บริจาค */}
