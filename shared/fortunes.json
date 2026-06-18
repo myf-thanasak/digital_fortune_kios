@@ -13,14 +13,28 @@
         "en": "May you live mindfully, with diligence and care."
       },
       "donation": {
-        "qrImage": "/QR.jpg",
+        "enabled": true,
         "title": {
           "th": "ร่วมทำบุญเสริมสิริมงคล",
           "en": "Make a Merit Donation"
         },
-        "message": {
+        "qrImage": "/donation/sri-mongkol-promptpay.png",
+        "accountName": {
+          "th": "วัดศรีมงคลธรรม",
+          "en": "Sri Mongkol Temple"
+        },
+        "accountMasked": "xxx-x-x3176-x",
+        "note": {
           "th": "เงินบริจาคจะโอนตรงเข้าสู่บัญชีของวัด",
-          "en": "Your donation will be transferred directly to the temple"
+          "en": "Your donation will be transferred directly to the temple account."
+        },
+        "buttonText": {
+          "th": "บันทึก QR บริจาค",
+          "en": "Save Donation QR"
+        },
+        "thankYouText": {
+          "th": "ขออนุโมทนาบุญ",
+          "en": "Thank you for your merit"
         }
       },
       "fortunes": [

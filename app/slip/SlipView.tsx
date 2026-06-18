@@ -11,7 +11,6 @@ import {
   AlertTriangle,
   Check,
   HeartHandshake,
-  QrCode,
 } from "lucide-react";
 import {
   type Locale,
@@ -25,7 +24,6 @@ import {
   normalizeLocale,
 } from "@/lib/fortune-data";
 import { site } from "@/lib/site";
-import { LotusMark } from "@/components/svg/ThaiOrnament";
 
 // ─── ข้อความตามภาษา ──────────────────────────────────────────────────────────
 const COPY = {
@@ -46,11 +44,8 @@ const COPY = {
     noNoText: "กรุณาสแกน QR Code ใหม่อีกครั้ง",
     notFoundTitle: "ไม่พบข้อมูลใบเซียมซีนี้",
     notFoundText: "กรุณาติดต่อเจ้าหน้าที่",
-    // donateFaith: "ขอเชิญผู้มีจิตศรัทธาร่วมทำบุญ โดยสแกน QR Code",
-    donateThanks: "ขออนุโมทนาบุญ",
-    // donateBadge: "QR สำหรับบริจาค",
-    // donateClarify: "นี่คือ QR สำหรับร่วมบริจาค ไม่ใช่ QR ใบเซียมซี",
-    saveQr: "บันทึก QR บริจาค",
+    accountNameLabel: "ชื่อบัญชี",
+    accountNoLabel: "เลขที่บัญชี",
     qrSaved: "บันทึก QR บริจาคแล้ว",
     copyLink: "คัดลอกลิงก์หน้านี้",
     qrMissing: "ยังไม่มีรูป QR บริจาค กรุณาวางไฟล์ที่ public/donation-qr.jpg",
@@ -73,12 +68,8 @@ const COPY = {
     noNoText: "Please scan the QR Code again.",
     notFoundTitle: "This fortune was not found",
     notFoundText: "Please contact the staff.",
-    // donateFaith:
-    //   "If you wish, you may make a merit donation directly to the temple.",
-    donateThanks: "We rejoice in your merit (Anumodana).",
-    // donateBadge: "Donation QR",
-    // donateClarify: "This is a donation QR, not the fortune slip QR.",
-    saveQr: "Save donation QR",
+    accountNameLabel: "Account name",
+    accountNoLabel: "Account no.",
     qrSaved: "Donation QR saved",
     copyLink: "Copy page link",
     qrMissing: "Donation QR not set. Add the file at public/donation-qr.jpg",
@@ -222,10 +213,11 @@ function SlipCard({
 
   // ─── บันทึกรูป QR บริจาค (ดาวน์โหลดไฟล์รูปโดยตรง) ───
   async function handleSaveQr() {
+    if (!donation) return;
     try {
       const link = document.createElement("a");
       link.href = donation.qrImage;
-      link.download = `donation-qr-${temple.templeId}.jpg`;
+      link.download = `donation-qr-${temple.templeId}.png`;
       link.click();
       showToast(t.qrSaved);
     } catch (err) {
@@ -355,66 +347,79 @@ function SlipCard({
           </p>
         ) : null}
 
-        {/* ─── Section ร่วมทำบุญ (QR บริจาค — แยกจาก QR ใบเซียมซีบนตู้) ─── */}
-        <section className="mt-6 overflow-hidden rounded-[2rem] border border-temple-gold/40 bg-gradient-to-b from-temple-red-dark via-[#4a0a0d] to-temple-ink p-6 text-center shadow-card">
-          <div className="flex flex-col items-center gap-2">
-            <span className="grid h-12 w-12 place-items-center rounded-xl border border-temple-gold/40 bg-white/5">
-              <HeartHandshake className="h-7 w-7 text-temple-gold-soft" />
-            </span>
-            <h2 className="font-heading text-xl font-bold text-temple-cream">
-              {donation.title[lang]}
-            </h2>
-            {/* <p className="text-sm leading-relaxed text-temple-cream/85">
-              {t.donateFaith}
-            </p> */}
-          </div>
-
-          {/* QR บริจาค */}
-          <div className="mt-5 flex flex-col items-center">
-            {/* <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-temple-gold/50 bg-temple-gold/15 px-3 py-1 text-xs font-semibold text-temple-gold-soft">
-              <QrCode className="h-3.5 w-3.5" />
-              {t.donateBadge}
-            </span> */}
-            <div className="rounded-2xl border-2 border-temple-gold/60 bg-white p-3">
-              {qrError ? (
-                <div className="grid h-52 w-52 place-items-center px-4 text-center text-xs leading-relaxed text-temple-ink/70">
-                  {t.qrMissing}
-                </div>
-              ) : (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={donation.qrImage}
-                  alt={donation.title[lang]}
-                  onError={() => setQrError(true)}
-                  className="h-52 w-52 object-contain"
-                />
-              )}
+        {/* ─── Section ร่วมทำบุญ (แสดงเฉพาะเมื่อ donation.enabled=true) ─── */}
+        {donation ? (
+          <section className="mt-6 overflow-hidden rounded-[2rem] border border-temple-gold/40 bg-gradient-to-b from-temple-red-dark via-[#4a0a0d] to-temple-ink p-6 text-center shadow-card">
+            <div className="flex flex-col items-center gap-2">
+              <span className="grid h-12 w-12 place-items-center rounded-xl border border-temple-gold/40 bg-white/5">
+                <HeartHandshake className="h-7 w-7 text-temple-gold-soft" />
+              </span>
+              <h2 className="font-heading text-xl font-bold text-temple-cream">
+                {donation.title[lang]}
+              </h2>
             </div>
-            {/* ข้อความสำคัญ: เงินบริจาคโอนตรงเข้าบัญชีวัด/มูลนิธิ */}
-            <p className="mt-4 rounded-lg bg-temple-gold/10 px-3 py-2 text-sm font-semibold leading-relaxed text-temple-gold-soft">
-              {donation.message[lang]}
+
+            {/* QR บริจาค */}
+            <div className="mt-5 flex flex-col items-center">
+              <div className="rounded-2xl border-2 border-temple-gold/60 bg-white p-3">
+                {qrError ? (
+                  <div className="grid h-52 w-52 place-items-center px-4 text-center text-xs leading-relaxed text-temple-ink/70">
+                    {t.qrMissing}
+                  </div>
+                ) : (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={donation.qrImage}
+                    alt={donation.title[lang]}
+                    onError={() => setQrError(true)}
+                    className="h-52 w-52 object-contain"
+                  />
+                )}
+              </div>
+
+              {/* ชื่อบัญชี + เลขบัญชี */}
+              <div className="mt-4 w-full rounded-xl border border-temple-gold/25 bg-white/5 px-4 py-3 text-left">
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="text-xs text-temple-cream/60">
+                    {t.accountNameLabel}
+                  </span>
+                  <span className="font-heading text-sm font-semibold text-temple-cream">
+                    {donation.accountName[lang]}
+                  </span>
+                </div>
+                <div className="mt-2 flex items-baseline justify-between gap-3">
+                  <span className="text-xs text-temple-cream/60">
+                    {t.accountNoLabel}
+                  </span>
+                  <span className="font-heading text-sm font-semibold tracking-wider text-temple-gold-soft">
+                    {donation.accountMasked}
+                  </span>
+                </div>
+              </div>
+
+              {/* ข้อความสำคัญ: เงินบริจาคโอนตรงเข้าบัญชีวัด */}
+              <p className="mt-4 rounded-lg bg-temple-gold/10 px-3 py-2 text-sm font-semibold leading-relaxed text-temple-gold-soft">
+                {donation.note[lang]}
+              </p>
+            </div>
+
+            {/* ปุ่มบันทึก QR */}
+            <div className="mt-5">
+              <button
+                type="button"
+                onClick={handleSaveQr}
+                className="btn-primary w-full !py-3.5"
+              >
+                <Download className="h-5 w-5" />
+                {donation.buttonText[lang]}
+              </button>
+            </div>
+
+            <p className="mt-5 text-sm italic text-temple-gold-soft/85">
+              {donation.thankYouText[lang]}
             </p>
-            {/* <p className="mt-2 text-[11px] text-temple-cream/55">
-              {t.donateClarify}
-            </p> */}
-          </div>
-
-          {/* ปุ่มบริจาค */}
-          <div className="mt-5">
-            <button
-              type="button"
-              onClick={handleSaveQr}
-              className="btn-primary w-full !py-3.5"
-            >
-              <Download className="h-5 w-5" />
-              {t.saveQr}
-            </button>
-          </div>
-
-          <p className="mt-5 text-sm italic text-temple-gold-soft/85">
-            {t.donateThanks}
-          </p>
-        </section>
+          </section>
+        ) : null}
       </div>
 
       {/* Toast แจ้งผล */}

@@ -37,10 +37,21 @@ export interface Fortune {
 
 /** ข้อมูล QR บริจาคของวัด/ศาลเจ้า (แสดงในหน้า /slip บนมือถือ) */
 export interface Donation {
-  /** path รูป QR บริจาค เช่น "/donation-qr.jpg" (อยู่ในโฟลเดอร์ public) */
-  qrImage: string;
+  /** เปิด/ปิดการแสดงการ์ดบริจาค */
+  enabled: boolean;
   title: Record<Locale, string>;
-  message: Record<Locale, string>;
+  /** path รูป QR บริจาค เช่น "/donation/sri-mongkol-promptpay.png" (อยู่ในโฟลเดอร์ public) */
+  qrImage: string;
+  /** ชื่อบัญชีผู้รับบริจาค */
+  accountName: Record<Locale, string>;
+  /** เลขบัญชีแบบปิดบางส่วน เช่น "xxx-x-x3176-x" */
+  accountMasked: string;
+  /** ข้อความสำคัญ เช่น เงินบริจาคโอนตรงเข้าบัญชีวัด */
+  note: Record<Locale, string>;
+  /** ข้อความบนปุ่มบันทึก QR */
+  buttonText: Record<Locale, string>;
+  /** ข้อความขอบคุณ/อนุโมทนา */
+  thankYouText: Record<Locale, string>;
 }
 
 export interface Temple {
@@ -104,20 +115,10 @@ export function getFortune(temple: Temple, no: number): Fortune | undefined {
   return temple.fortunes.find((f) => f.no === no);
 }
 
-/** ค่า QR บริจาคเริ่มต้น ใช้เมื่อวัดยังไม่ได้กำหนด donation ใน JSON */
-export const DEFAULT_DONATION: Donation = {
-  qrImage: "/QR.jpg",
-  title: {
-    th: "ร่วมทำบุญเสริมสิริมงคล",
-    en: "Make a Merit Donation",
-  },
-  message: {
-    th: "เงินบริจาคจะโอนตรงเข้าสู่บัญชีของวัด",
-    en: "Your donation will be transferred directly to the temple or foundation account.",
-  },
-};
-
-/** คืนข้อมูล QR บริจาคของวัด ถ้าไม่มีจะใช้ค่า default */
-export function getDonation(temple: Temple): Donation {
-  return temple.donation ?? DEFAULT_DONATION;
+/**
+ * คืนข้อมูล QR บริจาคของวัด — เฉพาะเมื่อมีและ enabled=true เท่านั้น
+ * ถ้าไม่มี donation หรือ enabled=false จะคืน undefined (ให้ซ่อนการ์ดบริจาค)
+ */
+export function getDonation(temple: Temple): Donation | undefined {
+  return temple.donation?.enabled ? temple.donation : undefined;
 }
