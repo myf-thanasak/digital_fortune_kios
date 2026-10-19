@@ -1,5 +1,5 @@
-import { Phone, Facebook, MessageCircle } from "lucide-react";
-import { site } from "@/lib/site";
+import { Phone, Facebook, MessageCircle, PlayCircle } from "lucide-react";
+import { site, demoUrl } from "@/lib/site";
 import Reveal from "./Reveal";
 import { ThaiDivider } from "./svg/ThaiOrnament";
 
@@ -24,6 +24,16 @@ export default function CtaSection() {
             ทีมงานยินดีให้คำปรึกษา ออกแบบรูปแบบการใช้งาน
             และจัดทำใบเสนอราคาให้เหมาะกับพื้นที่จริง
           </p>
+
+          <a
+            href={demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline-gold mt-8"
+          >
+            <PlayCircle className="h-5 w-5 shrink-0" />
+            {site.ctaSecondary}
+          </a>
 
           <ThaiDivider className="mt-8" />
         </Reveal>

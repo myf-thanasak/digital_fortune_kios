@@ -16,7 +16,17 @@ export const site = {
   ctaPrimary: "สอบถามรายละเอียดและขอใบเสนอราคา",
   ctaSecondary: "ดูตัวอย่างการทำงานของระบบ",
   ctaLine: "ติดต่อผ่าน LINE",
+  ctaDemo: "ลองเสี่ยงเลย",
 } as const;
+
+// ลิงก์เดโมสาธารณะ — ตั้งค่า NEXT_PUBLIC_DEMO_URL เพื่อเปลี่ยน (ไม่ต้องแก้โค้ด)
+export const demoUrl =
+  process.env.NEXT_PUBLIC_DEMO_URL || "https://client-rho-eight-31.vercel.app/";
+
+// เปิดแชต LINE OA พร้อมข้อความที่พิมพ์ไว้ให้ล่วงหน้า
+export function lineMessageUrl(text: string) {
+  return `https://line.me/R/oaMessage/${site.lineId}/?${encodeURIComponent(text)}`;
+}
 
 export const seoKeywords = [
   "ดิจิทัลเซียมซี",
@@ -37,6 +47,7 @@ export const navLinks = [
   { label: "สิ่งที่จะได้รับ", href: "#features" },
   // { label: "ขั้นตอนใช้งาน", href: "#flow" },
   { label: "เหมาะกับใคร", href: "#usecase" },
+  { label: "แพ็กเกจ", href: "#packages" },
   { label: "คำถามที่พบบ่อย", href: "#faq" },
 ];
 
@@ -215,6 +226,75 @@ export const services = [
   "Remote Service",
   "ดูแลระบบหลังการขาย",
 ];
+
+export type Package = {
+  id: string;
+  name: string;
+  audience: string;
+  price: string;
+  priceNote: string;
+  features: string[];
+  highlight?: string;
+  featured?: boolean;
+  cta: string;
+};
+
+export const packages: Package[] = [
+  {
+    id: "office-newyear",
+    name: "ปีใหม่ออฟฟิศ",
+    audience: "บริษัท / ออฟฟิศ / งานเลี้ยงปีใหม่",
+    price: "2,900 บาท",
+    priceNote: "ใช้ได้ 14 วัน",
+    features: [
+      "ลิงก์เว็บเซียมซีพร้อมโลโก้บริษัท",
+      "ข้อความอวยพรปีใหม่ขององค์กร",
+      "เปิดบนทีวี / iPad / จอทัชสกรีนที่มีอยู่แล้ว",
+      "ไม่ต้องมีพนักงานดูแล",
+    ],
+    cta: "สนใจแพ็กเกจปีใหม่ออฟฟิศ",
+  },
+  {
+    id: "temple",
+    name: "วัด / ศาลเจ้า / มูลนิธิ",
+    audience: "จุดทำบุญที่ต้องการรับบริจาคผ่าน QR",
+    price: "9,900 บาท",
+    priceNote: "ต่อปี",
+    features: [
+      "ลิงก์เซียมซีดิจิทัลของวัดเอง",
+      "QR รับบริจาคโอนตรงเข้าบัญชีวัด",
+      "ใช้คำทำนายของวัดเองได้",
+    ],
+    featured: true,
+    cta: "สนใจแพ็กเกจวัด / ศาลเจ้า",
+  },
+  {
+    id: "cny-2027",
+    name: "แคมเปญตรุษจีน 2027",
+    audience: "ห้างสรรพสินค้า / แบรนด์ / อีเวนต์",
+    price: "ขอใบเสนอราคา",
+    priceNote: "ตามขนาดงาน",
+    features: [
+      "ตู้ Kiosk ทัชสกรีน 55 นิ้ว",
+      "ติดตั้งหน้างานพร้อมทีมดูแล",
+      "ธีมกราฟิกและคำทำนายตามแบรนด์",
+    ],
+    highlight:
+      "Early-bird: จองและชำระมัดจำ 30% ภายใน 15 พ.ย. รับส่วนลด 15%",
+    cta: "ขอใบเสนอราคาตรุษจีน 2027",
+  },
+];
+
+export type ClientWork = { name: string; note?: string };
+
+export const clientWorks: ClientWork[] = [
+  { name: "One Bangkok" },
+  { name: "Platinum Fashion Mall" },
+  { name: "True Digital Park" },
+  { name: "มิวเซียมสยาม", note: "ISAN UNBOXED FEST 2026" },
+];
+
+export const portfolioUrl = "https://myfirstc.com/blog?service=fortune";
 
 export type Faq = { q: string; a: string };
 

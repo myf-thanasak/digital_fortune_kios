@@ -9,18 +9,22 @@ import {
   Copy,
   Check,
   PhoneCall,
+  Package,
 } from "lucide-react";
-import { site } from "@/lib/site";
+import { site, packages } from "@/lib/site";
+import { trackLead } from "./FacebookPixel";
 
 type FormState = {
   name: string;
   phone: string;
+  pkg: string;
   details: string;
 };
 
 const initialState: FormState = {
   name: "",
   phone: "",
+  pkg: "",
   details: "",
 };
 
@@ -30,6 +34,7 @@ function buildMessage(data: FormState) {
     "──────────────────",
     `ชื่อผู้ติดต่อ: ${data.name || "-"}`,
     `เบอร์โทร: ${data.phone || "-"}`,
+    `แพ็กเกจที่สนใจ: ${data.pkg || "ยังไม่แน่ใจ / ขอคำแนะนำ"}`,
     `รายละเอียดที่สนใจ: ${data.details || "-"}`,
   ].join("\n");
 }
@@ -69,6 +74,7 @@ export default function QuoteForm() {
     setMessage(msg);
     await copyMessage(msg);
     setSent(true);
+    trackLead("quote_form");
     window.open(site.lineUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -161,6 +167,29 @@ export default function QuoteForm() {
           type="tel"
           autoComplete="tel"
         />
+      </div>
+
+      <div className="mt-4">
+        <label
+          htmlFor="quote-pkg"
+          className="mb-1.5 flex items-center gap-2 text-sm font-medium text-temple-ink"
+        >
+          <Package className="h-4 w-4 text-temple-gold" />
+          แพ็กเกจที่สนใจ
+        </label>
+        <select
+          id="quote-pkg"
+          value={data.pkg}
+          onChange={(e) => update("pkg")(e.target.value)}
+          className="w-full rounded-xl border border-temple-gold/30 bg-temple-cream/50 px-4 py-3 text-sm text-temple-ink outline-none transition-colors focus:border-temple-gold focus:bg-white focus:ring-2 focus:ring-temple-gold/30"
+        >
+          <option value="">ยังไม่แน่ใจ / ขอคำแนะนำ</option>
+          {packages.map((p) => (
+            <option key={p.id} value={`${p.name} (${p.price})`}>
+              {p.name} — {p.price}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="mt-4">

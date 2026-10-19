@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { FileText } from "lucide-react";
-import { hero, site } from "@/lib/site";
+import { FileText, Sparkles } from "lucide-react";
+import { hero, site, demoUrl } from "@/lib/site";
 import Reveal from "./Reveal";
 import kioskImg from "@/public/kios55_L.webp";
 
@@ -33,8 +33,17 @@ export default function Hero() {
             {hero.description}
           </p>
 
-          <div className="mt-8 flex justify-center lg:justify-start">
-            <a href="#contact" className="btn-primary whitespace-nowrap">
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary whitespace-nowrap"
+            >
+              <Sparkles className="h-5 w-5 shrink-0" />
+              {site.ctaDemo}
+            </a>
+            <a href="#contact" className="btn-outline-gold whitespace-nowrap">
               <FileText className="h-5 w-5 shrink-0" />
               {site.ctaPrimary}
             </a>

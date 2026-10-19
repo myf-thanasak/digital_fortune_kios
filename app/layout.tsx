@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Kanit, Prompt } from "next/font/google";
 import "./globals.css";
 import { site, seoKeywords } from "@/lib/site";
+import FacebookPixel from "@/components/FacebookPixel";
 
 const kanit = Kanit({
   subsets: ["thai", "latin"],
@@ -109,6 +110,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <FacebookPixel />
       </body>
     </html>
   );

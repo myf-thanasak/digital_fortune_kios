@@ -10,6 +10,8 @@ import UseCaseSection from "@/components/UseCaseSection";
 import BenefitSection from "@/components/BenefitSection";
 import HardwareSection from "@/components/HardwareSection";
 import ServiceSection from "@/components/ServiceSection";
+import PortfolioSection from "@/components/PortfolioSection";
+import PackageSection from "@/components/PackageSection";
 import CtaSection from "@/components/CtaSection";
 import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
@@ -31,6 +33,8 @@ export default function Home() {
         <UseCaseSection />
         {/* <HardwareSection /> */}
         <ServiceSection />
+        <PortfolioSection />
+        <PackageSection />
         <CtaSection />
         <FaqSection />
       </main>
