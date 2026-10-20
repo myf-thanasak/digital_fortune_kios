@@ -11,8 +11,9 @@ export const site = {
   phoneRaw: "0969754100",
   lineId: "@myfirstc",
   lineUrl: "https://line.me/R/ti/p/@myfirstc",
-  domain: "ดิจิทัลเซียมซี.com",
-  url: "https://ดิจิทัลเซียมซี.com",
+  // โดเมนหลัก — ดิจิทัลเซียมซี.com redirect 308 มาที่นี่
+  domain: "digitalsiamsee.com",
+  url: "https://www.digitalsiamsee.com",
   ctaPrimary: "สอบถามรายละเอียดและขอใบเสนอราคา",
   ctaSecondary: "ดูตัวอย่างการทำงานของระบบ",
   ctaLine: "ติดต่อผ่าน LINE",
@@ -21,7 +22,7 @@ export const site = {
 
 // ลิงก์เดโมสาธารณะ — ตั้งค่า NEXT_PUBLIC_DEMO_URL เพื่อเปลี่ยน (ไม่ต้องแก้โค้ด)
 export const demoUrl =
-  process.env.NEXT_PUBLIC_DEMO_URL || "https://client-rho-eight-31.vercel.app/";
+  process.env.NEXT_PUBLIC_DEMO_URL || "https://play.digitalsiamsee.com/";
 
 // เปิดแชต LINE OA พร้อมข้อความที่พิมพ์ไว้ให้ล่วงหน้า
 export function lineMessageUrl(text: string) {

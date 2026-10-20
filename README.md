@@ -47,7 +47,7 @@ public/              # วางภาพจริง (ดู public/README.md)
 ## แก้ไขเนื้อหา
 
 แก้ข้อความ ฟีเจอร์ FAQ และช่องทางติดต่อทั้งหมดได้ที่ **`lib/site.ts`** ไฟล์เดียว
-(เบอร์โทร `096-975-4100`, LINE `@myfirstc`, โดเมน `ดิจิทัลเซียมซี.com`)
+(เบอร์โทร `096-975-4100`, LINE `@myfirstc`, โดเมน `digitalsiamsee.com`)
 
 ## ฟอร์มขอใบเสนอราคา
 
@@ -69,7 +69,7 @@ public/              # วางภาพจริง (ดู public/README.md)
 - Open Graph + Twitter Card
 - JSON-LD: `Organization` + `Product` + `WebSite`
 - `sitemap.xml` + `robots.txt`
-- โดเมนเป้าหมาย: **ดิจิทัลเซียมซี.com** (ตั้งค่าใน `lib/site.ts` → `site.url`)
+- โดเมนหลัก: **www.digitalsiamsee.com** (ดิจิทัลเซียมซี.com redirect 308 มาที่นี่; เดโมอยู่ที่ play.digitalsiamsee.com) (ตั้งค่าใน `lib/site.ts` → `site.url`)
 
 ## หมายเหตุ
 
