@@ -238,6 +238,8 @@ export type Package = {
   highlight?: string;
   featured?: boolean;
   cta: string;
+  /** Exact LINE OA auto-response keyword this package's button sends. */
+  lineKeyword: string;
 };
 
 export const packages: Package[] = [
@@ -254,6 +256,7 @@ export const packages: Package[] = [
       "ไม่ต้องมีพนักงานดูแล",
     ],
     cta: "สนใจแพ็กเกจปีใหม่ออฟฟิศ",
+    lineKeyword: "เลือก ปีใหม่ออฟฟิศ",
   },
   {
     id: "temple",
@@ -268,6 +271,7 @@ export const packages: Package[] = [
     ],
     featured: true,
     cta: "สนใจแพ็กเกจวัด / ศาลเจ้า",
+    lineKeyword: "เลือก วัด/ศาลเจ้า",
   },
   {
     id: "cny-2027",
@@ -283,6 +287,7 @@ export const packages: Package[] = [
     highlight:
       "Early-bird: จองและชำระมัดจำ 30% ภายใน 15 พ.ย. รับส่วนลด 15%",
     cta: "ขอใบเสนอราคาตรุษจีน 2027",
+    lineKeyword: "เลือก ตรุษจีน 2027",
   },
 ];
 

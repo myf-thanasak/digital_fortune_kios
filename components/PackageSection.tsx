@@ -79,9 +79,9 @@ export default function PackageSection() {
 
                 <div className="mt-auto pt-6">
                   <a
-                    href={lineMessageUrl(
-                      `สนใจแพ็กเกจ "${pkg.name}" (${pkg.price}) ขอรายละเอียดเพิ่มเติมครับ/ค่ะ`
-                    )}
+                    // Sends the exact keyword so LINE's auto-reply answers
+                    // with this package's order steps straight away.
+                    href={lineMessageUrl(pkg.lineKeyword)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-line w-full"
