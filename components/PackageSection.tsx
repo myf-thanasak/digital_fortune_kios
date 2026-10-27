@@ -13,7 +13,7 @@ export default function PackageSection() {
           description="ราคาชัดเจน เริ่มใช้งานได้เร็ว กดปุ่มเพื่อคุยกับทีมงานผ่าน LINE ได้ทันที"
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {packages.map((pkg, i) => (
             <Reveal key={pkg.id} delay={i * 100} className="h-full">
               <div
