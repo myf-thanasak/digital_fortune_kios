@@ -140,18 +140,17 @@ export const packages: Package[] = [rewardPackage, ...otherPackages];
 
 export type ClientWork = {
   name: string;
-  /** Dark-ink logo on transparent, from myfirstc.com's client logos. */
-  logo?: { src: string; width: number; height: number; className: string };
+  /** Dark-ink logo on transparent. */
+  logo: { src: string; width: number; height: number; className: string };
 };
 
 // Logo heights differ so wide wordmarks and tall marks look the same size.
 export const clientWorks: ClientWork[] = [
-  { name: "Central Group", logo: { src: "/clients/central.png", width: 359, height: 48, className: "h-5 sm:h-6" } },
-  { name: "One Bangkok", logo: { src: "/clients/one-bangkok.png", width: 330, height: 41, className: "h-5 sm:h-6" } },
+  { name: "Central Group", logo: { src: "/clients/central.png", width: 359, height: 48, className: "h-4 sm:h-5" } },
+  { name: "One Bangkok", logo: { src: "/clients/one-bangkok.png", width: 330, height: 41, className: "h-4 sm:h-5" } },
   { name: "Platinum Fashion Mall", logo: { src: "/clients/platinum.png", width: 240, height: 114, className: "h-12 sm:h-14" } },
   { name: "True Digital Park", logo: { src: "/clients/true.png", width: 276, height: 100, className: "h-8 sm:h-9" } },
-  // No logo file yet; shown as text until one is added.
-  { name: "มิวเซียมสยาม" },
+  { name: "มิวเซียมสยาม", logo: { src: "/clients/museum-siam.png", width: 304, height: 321, className: "h-16 sm:h-20" } },
 ];
 
 export const portfolioUrl = "https://myfirstc.com/blog?service=fortune";
