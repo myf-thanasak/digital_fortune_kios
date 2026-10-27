@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { MessageCircle, Smartphone } from "lucide-react";
-import { demoUrl, lineMessageUrl, rewardPackage } from "@/lib/site";
+import { rewardDemoUrl, lineMessageUrl, rewardPackage } from "@/lib/site";
 import cylinderImg from "@/public/shake-cylinder.webp";
 
 export default function Hero() {
@@ -12,14 +12,8 @@ export default function Hero() {
 
       <div className="container-page relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="text-center lg:text-left">
-          <span className="chip">
-            <span className="rounded-full bg-pop-pink px-2 py-0.5 text-xs font-semibold text-white">
-              ใหม่
-            </span>
-            แทนเกมหมุนวงล้อแบบเดิม
-          </span>
 
-          <h1 className="mt-5 font-heading text-5xl font-bold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="font-heading text-5xl font-bold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
             เขย่ามือถือ
             <br />
             <span className="bg-gradient-to-r from-pop-violet via-pop-pink to-pop-sun bg-clip-text text-transparent">
@@ -34,7 +28,7 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
             <a
-              href={demoUrl}
+              href={rewardDemoUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-pop w-full sm:w-auto"

@@ -21,6 +21,13 @@ export const site = {
 export const demoUrl =
   process.env.NEXT_PUBLIC_DEMO_URL || "https://play.digitalsiamsee.com/";
 
+// The shake-for-prize demo theme on the same app.
+export const rewardDemoUrl = (() => {
+  const url = new URL(demoUrl);
+  url.searchParams.set("t", "reward");
+  return url.toString();
+})();
+
 // เปิดแชต LINE OA พร้อมข้อความที่พิมพ์ไว้ให้ล่วงหน้า
 export function lineMessageUrl(text: string) {
   return `https://line.me/R/oaMessage/${site.lineId}/?${encodeURIComponent(text)}`;

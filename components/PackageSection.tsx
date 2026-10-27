@@ -1,5 +1,5 @@
-import { Check, MessageCircle, Smartphone, Sparkles } from "lucide-react";
-import { rewardPackage, otherPackages, lineMessageUrl, demoUrl } from "@/lib/site";
+import { Check, MessageCircle, Smartphone } from "lucide-react";
+import { rewardPackage, otherPackages, lineMessageUrl, rewardDemoUrl } from "@/lib/site";
 import Reveal from "./Reveal";
 
 export default function PackageSection() {
@@ -13,12 +13,8 @@ export default function PackageSection() {
         <Reveal className="mx-auto mt-10 max-w-4xl">
           <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-pop-violet via-[#8A4BFF] to-pop-pink p-7 text-white shadow-[0_30px_60px_-25px_rgba(108,71,255,0.8)] sm:p-10">
             <div className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-pop-sun/40 blur-3xl" />
-            <span className="relative inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5" />
-              แนะนำ · ใช้ได้ทั้งปี
-            </span>
 
-            <div className="relative mt-4 grid gap-8 md:grid-cols-2 md:items-end">
+            <div className="relative grid gap-8 md:grid-cols-2 md:items-end">
               <div>
                 <h3 className="font-heading text-[1.6rem] font-bold sm:text-4xl">
                   {pkg.emoji} {pkg.name}
@@ -55,7 +51,7 @@ export default function PackageSection() {
                 {pkg.cta}
               </a>
               <a
-                href={demoUrl}
+                href={rewardDemoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn border-2 border-white/40 text-white hover:bg-white/10"
