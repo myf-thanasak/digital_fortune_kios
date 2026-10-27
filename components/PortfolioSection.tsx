@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { clientWorks, portfolioUrl } from "@/lib/site";
 
@@ -6,10 +7,20 @@ export default function PortfolioSection() {
     <section id="works" className="py-10">
       <div className="container-page text-center">
         <p className="text-sm font-medium text-pop-ink/50">เคยใช้จริงที่</p>
-        <ul className="mt-3 flex flex-wrap justify-center gap-x-8 gap-y-2">
+        <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 opacity-75">
           {clientWorks.map((w) => (
-            <li key={w.name} className="font-heading text-lg font-semibold text-pop-ink/80">
-              {w.name}
+            <li key={w.name}>
+              {w.logo ? (
+                <Image
+                  src={w.logo.src}
+                  alt={w.name}
+                  width={w.logo.width}
+                  height={w.logo.height}
+                  className={`w-auto ${w.logo.className}`}
+                />
+              ) : (
+                <span className="font-heading text-xl font-bold text-pop-ink">{w.name}</span>
+              )}
             </li>
           ))}
         </ul>
