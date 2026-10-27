@@ -1,83 +1,94 @@
 import Image from "next/image";
-import { FileText, Sparkles } from "lucide-react";
-import { hero, site, demoUrl } from "@/lib/site";
-import Reveal from "./Reveal";
-import kioskImg from "@/public/kios55_L.webp";
+import { MessageCircle, Smartphone } from "lucide-react";
+import { demoUrl, lineMessageUrl, rewardPackage } from "@/lib/site";
+import cylinderImg from "@/public/shake-cylinder.webp";
 
 export default function Hero() {
   return (
-    <section
-      id="top"
-      className="relative overflow-hidden bg-temple-radial pt-28 pb-16 sm:pt-32 lg:pt-40 lg:pb-24"
-    >
-      <div className="absolute inset-0 thai-pattern opacity-50" />
-      <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-temple-red/40 blur-[120px]" />
-      <div className="pointer-events-none absolute -right-10 bottom-0 h-80 w-80 rounded-full bg-temple-gold/20 blur-[120px]" />
+    <section id="top" className="relative overflow-hidden pt-24 pb-14 sm:pt-28 lg:pt-32 lg:pb-20">
+      <div className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-pop-violet/25 blur-[100px]" />
+      <div className="pointer-events-none absolute -right-20 top-40 h-80 w-80 rounded-full bg-pop-pink/25 blur-[100px]" />
+      <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-pop-sun/30 blur-[100px]" />
 
-      <div className="container-page relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
-        <Reveal className="text-center lg:text-left">
-          {/* <span className="eyebrow-dark mx-auto lg:mx-0">
-            <Sparkles className="h-3.5 w-3.5" />
-            {hero.badge}
-          </span> */}
+      <div className="container-page relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="text-center lg:text-left">
+          <span className="chip">
+            <span className="rounded-full bg-pop-pink px-2 py-0.5 text-xs font-semibold text-white">
+              ใหม่
+            </span>
+            แทนเกมหมุนวงล้อแบบเดิม
+          </span>
 
-          <h1 className="heading-xl text-temple-cream">
-            ดิจิทัล<span className="gold-text">เซียมซี</span>
+          <h1 className="mt-5 font-heading text-5xl font-bold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
+            เขย่ามือถือ
+            <br />
+            <span className="bg-gradient-to-r from-pop-violet via-pop-pink to-pop-sun bg-clip-text text-transparent">
+              ลุ้นรางวัลทันที
+            </span>
           </h1>
 
-          <p className="mt-5 font-heading text-xl font-medium text-temple-gold-soft sm:text-2xl">
-            {hero.subtitle}
+          <p className="mx-auto mt-5 max-w-md text-lg text-pop-ink/70 lg:mx-0">
+            <span className="block">เกมแจกรางวัลให้ร้านค้า คาเฟ่ แบรนด์</span>{" "}
+            <span className="block">สแกน QR แล้วเขย่า ไม่ต้องโหลดแอป</span>
           </p>
 
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-temple-cream/75 sm:text-lg lg:mx-0">
-            {hero.description}
-          </p>
-
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
             <a
               href={demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary whitespace-nowrap"
+              className="btn-pop w-full sm:w-auto"
             >
-              <Sparkles className="h-5 w-5 shrink-0" />
-              {site.ctaDemo}
+              <Smartphone className="h-5 w-5" />
+              ลองเขย่าฟรี
             </a>
-            <a href="#contact" className="btn-outline-gold whitespace-nowrap">
-              <FileText className="h-5 w-5 shrink-0" />
-              {site.ctaPrimary}
+            <a
+              href={lineMessageUrl(rewardPackage.lineKeyword)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-line w-full sm:w-auto"
+            >
+              <MessageCircle className="h-5 w-5" />
+              ทัก LINE ดูแพ็ก
             </a>
           </div>
 
-          <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-temple-gold/20 pt-6">
-            {hero.stats.map((s) => (
-              <div key={s.label} className="text-center lg:text-left">
-                <dt className="font-heading text-2xl font-bold gold-text sm:text-3xl">
-                  {s.value}
-                </dt>
-                <dd className="mt-1 text-xs text-temple-cream/60 sm:text-sm">
-                  {s.label}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
+          <p className="mt-5 text-sm text-pop-ink/55">
+            เริ่ม <span className="font-semibold text-pop-ink">{rewardPackage.price} บาท</span>{" "}
+            / แคมเปญ 30 วัน
+          </p>
+        </div>
 
-        <Reveal delay={150} className="flex justify-center lg:justify-end">
-          <div className="relative w-full max-w-[18rem] sm:max-w-xs lg:max-w-sm">
-            <div className="absolute -inset-6 -z-10 rounded-[3rem] bg-temple-gold/20 blur-3xl" />
-            <div className="pointer-events-none absolute inset-x-10 bottom-3 -z-10 h-16 rounded-[50%] bg-black/50 blur-2xl" />
-            <Image
-              src={kioskImg}
-              alt="ตู้ Digital เซียมซี ขนาด 55 นิ้ว แบบ Touch Screen พร้อม QR Code รับบริจาค"
-              priority
-              placeholder="blur"
-              sizes="(max-width: 1024px) 70vw, 380px"
-              className="h-auto w-full drop-shadow-[0_30px_55px_rgba(0,0,0,0.55)]"
-            />
-          </div>
-        </Reveal>
+        <PhoneMockup />
       </div>
     </section>
+  );
+}
+
+function PhoneMockup() {
+  return (
+    <div className="relative mx-auto w-60 sm:w-64" aria-hidden="true">
+      <span className="absolute -left-14 top-16 text-4xl motion-safe:animate-float-slow">☕</span>
+      <span className="absolute -right-12 top-6 text-4xl motion-safe:animate-float-slow [animation-delay:1.5s]">🎁</span>
+      <span className="absolute -right-14 bottom-24 text-4xl motion-safe:animate-float-slow [animation-delay:3s]">🏷️</span>
+
+      <div className="relative aspect-[9/18.5] overflow-hidden rounded-[2.6rem] border-[9px] border-pop-ink bg-gradient-to-b from-pop-sun via-pop-pink to-pop-violet shadow-[0_30px_60px_-20px_rgba(76,43,214,0.6)]">
+        <div className="absolute left-1/2 top-2 h-5 w-20 -translate-x-1/2 rounded-full bg-pop-ink" />
+        <p className="mt-12 text-center font-heading text-2xl font-bold text-white drop-shadow">
+          เขย่าเลย!
+        </p>
+        <Image
+          src={cylinderImg}
+          alt=""
+          priority
+          sizes="160px"
+          className="mx-auto mt-4 w-[55%] origin-bottom motion-safe:animate-shake"
+        />
+        <div className="absolute inset-x-3 bottom-5 rounded-2xl bg-white px-3 py-3 text-center shadow-xl motion-safe:animate-pop-in">
+          <p className="text-xs font-medium text-pop-ink/60">🎉 ยินดีด้วย! คุณได้รับ</p>
+          <p className="font-heading text-lg font-bold text-pop-violet">☕ ฟรี 1 แก้ว</p>
+        </div>
+      </div>
+    </div>
   );
 }

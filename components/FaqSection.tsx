@@ -1,74 +1,28 @@
-"use client";
-
-import { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { faqs } from "@/lib/site";
-import SectionHeading from "./SectionHeading";
-import Reveal from "./Reveal";
 
+// Native <details>: answers stay in the HTML for search engines and AI
+// crawlers, and no client JavaScript is needed.
 export default function FaqSection() {
-  const [open, setOpen] = useState<number | null>(0);
-
   return (
-    <section id="faq" className="section-pad bg-temple-cream">
-      <div className="container-page">
-        <SectionHeading
-          // eyebrow="คำถามที่พบบ่อย"
-          title="คำถามที่พบบ่อย"
-          description="รวมคำถามที่ลูกค้าวัด ศาลเจ้า และองค์กรการกุศลถามบ่อยที่สุด"
-        />
-
-        <Reveal className="mx-auto mt-12 max-w-3xl">
-          <ul className="space-y-3">
-            {faqs.map((faq, i) => {
-              const isOpen = open === i;
-              return (
-                <li
-                  key={faq.q}
-                  className="overflow-hidden rounded-2xl border border-temple-gold/25 bg-white shadow-soft"
-                >
-                  <button
-                    type="button"
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    aria-expanded={isOpen}
-                    className="flex w-full items-center gap-4 px-5 py-4 text-left"
-                  >
-                    <span
-                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg transition-colors ${
-                        isOpen
-                          ? "bg-temple-red text-temple-gold-soft"
-                          : "bg-temple-gold/15 text-temple-red"
-                      }`}
-                    >
-                      <HelpCircle className="h-5 w-5" />
-                    </span>
-                    <span className="flex-1 font-heading text-base font-semibold text-temple-ink sm:text-lg">
-                      {faq.q}
-                    </span>
-                    <ChevronDown
-                      className={`h-5 w-5 shrink-0 text-temple-gold transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  <div
-                    className={`grid transition-all duration-300 ease-out ${
-                      isOpen
-                        ? "grid-rows-[1fr] opacity-100"
-                        : "grid-rows-[0fr] opacity-0"
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <p className="px-5 pb-5 pl-[4.5rem] text-sm leading-relaxed text-temple-ink/75 sm:text-base">
-                        {faq.a}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </Reveal>
+    <section id="faq" className="py-16 sm:py-20">
+      <div className="container-page max-w-3xl">
+        <h2 className="heading-pop text-center">คำถามที่พบบ่อย</h2>
+        <div className="mt-10 space-y-3">
+          {faqs.map((faq, i) => (
+            <details
+              key={faq.q}
+              open={i === 0}
+              className="group rounded-2xl bg-white px-5 shadow-[0_8px_24px_-18px_rgba(23,19,43,0.4)]"
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-heading text-base font-semibold sm:text-lg [&::-webkit-details-marker]:hidden">
+                {faq.q}
+                <ChevronDown className="h-5 w-5 shrink-0 text-pop-violet transition-transform group-open:rotate-180" />
+              </summary>
+              <p className="pb-5 text-pop-ink/70">{faq.a}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
   );

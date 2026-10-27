@@ -1,26 +1,28 @@
-import { Phone, MessageCircle } from "lucide-react";
-import { site } from "@/lib/site";
+import { MessageCircle, Smartphone } from "lucide-react";
+import { demoUrl, lineMessageUrl, rewardPackage } from "@/lib/site";
 
-// แถบติดต่อแบบ Sticky ด้านล่างจอ — แสดงเฉพาะมือถือ/แท็บเล็ตเล็ก
+// แถบปุ่มด้านล่างจอ — แสดงเฉพาะมือถือ
 export default function StickyContactBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-temple-gold/30 bg-temple-ink/95 backdrop-blur lg:hidden">
-      <div className="grid grid-cols-2 gap-2 p-2.5">
+    <div className="fixed inset-x-0 bottom-0 z-50 bg-white/90 p-2.5 shadow-[0_-8px_24px_-16px_rgba(23,19,43,0.4)] backdrop-blur md:hidden">
+      <div className="grid grid-cols-2 gap-2">
         <a
-          href={`tel:${site.phoneRaw}`}
-          className="flex items-center justify-center gap-2 rounded-xl bg-temple-red px-4 py-3 text-sm font-semibold text-white active:scale-[0.98]"
-        >
-          <Phone className="h-4 w-4" />
-          โทรสอบถาม
-        </a>
-        <a
-          href={site.lineUrl}
+          href={demoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 rounded-xl bg-[#06C755] px-4 py-3 text-sm font-semibold text-white active:scale-[0.98]"
+          className="btn-pop !py-3 text-sm"
+        >
+          <Smartphone className="h-4 w-4" />
+          ลองเขย่าฟรี
+        </a>
+        <a
+          href={lineMessageUrl(rewardPackage.lineKeyword)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-line !py-3 text-sm"
         >
           <MessageCircle className="h-4 w-4" />
-          แชต LINE
+          ทัก LINE
         </a>
       </div>
     </div>

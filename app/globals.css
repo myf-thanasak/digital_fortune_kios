@@ -5,11 +5,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 88px;
+    scroll-padding-top: 76px;
   }
 
   body {
-    @apply bg-temple-cream text-temple-ink font-body antialiased;
+    @apply bg-pop-paper text-pop-ink font-body antialiased;
   }
 
   h1,
@@ -22,7 +22,7 @@
   }
 
   ::selection {
-    @apply bg-temple-gold/40 text-temple-ink;
+    @apply bg-pop-sun/60 text-pop-ink;
   }
 }
 
@@ -69,6 +69,22 @@
 
   .btn-red {
     @apply btn bg-temple-red text-white shadow-card hover:-translate-y-0.5 hover:bg-temple-red-light;
+  }
+
+  .btn-pop {
+    @apply btn bg-pop-violet text-white shadow-[0_10px_30px_-10px_rgba(108,71,255,0.7)] hover:-translate-y-0.5 hover:bg-pop-violet-dark focus-visible:ring-pop-violet;
+  }
+
+  .btn-ghost {
+    @apply btn border-2 border-pop-ink/10 bg-white text-pop-ink hover:-translate-y-0.5 hover:border-pop-ink/25 focus-visible:ring-pop-violet;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-sm font-medium text-pop-ink shadow-[0_2px_10px_-4px_rgba(23,19,43,0.2)];
+  }
+
+  .heading-pop {
+    @apply font-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl;
   }
 
   .btn-line {
