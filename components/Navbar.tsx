@@ -7,9 +7,15 @@ import { navLinks, site } from "@/lib/site";
 export function Logo() {
   return (
     <span className="flex items-center gap-2">
-      <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-pop-violet to-pop-pink text-lg shadow-[0_6px_16px_-6px_rgba(255,61,127,0.7)]">
-        🎋
-      </span>
+      {/* Shaking fortune cylinder with one stick jumping out; also app/icon.svg. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/logo.svg"
+        alt=""
+        width={40}
+        height={40}
+        className="h-10 w-10 drop-shadow-[0_6px_12px_rgba(255,61,127,0.45)]"
+      />
       <span className="font-heading text-lg font-bold tracking-tight text-pop-ink">
         ดิจิทัลเซียมซี
       </span>
